@@ -1,5 +1,4 @@
 var footballTeams = ["patriots", "cowboys", "rams", "dolphins", "panthers", "bills"];
-var lettersGuessed = [];
 var userGuess;
 var wins = 0;
 var remainingGuess = 13;
@@ -17,11 +16,12 @@ for (i = currentWord.length; i > 0; i--){
     emptyWord += "-";
 }
 
-console.log(emptyWord);
 
-String.prototype.replaceAt=function(index, character) {
-    return this.substr(0, index) + character + this.substr(index+character.length);
-}
+function replaceAt(string, index, replace) {
+    return string.substring(0, index) + replace + string.substring(index + 1);
+  }
+
+var lettersGuessed = [];
 
 document.onkeyup = function(event){
     
@@ -34,15 +34,56 @@ document.onkeyup = function(event){
          remainingGuess--;
      }
 
-      if (currentWord.includes(userGuess)){
+      if(currentWord.includes(userGuess)){
         var i = currentWord.indexOf(userGuess);
-        emptyWord = emptyWord.replaceAt(i, userGuess);
+        emptyWord = replaceAt(emptyWord, i, userGuess);
       }
+
+     if(userGuess) {
+        lettersGuessed.push(userGuess);
+     }
+
+      if (footballTeams.includes(emptyWord)){
+
+        emptyWord = "";
+        
+         currentWord = footballTeams[Math.floor(Math.random() * footballTeams.length)];
+
+         for (i = currentWord.length; i > 0; i--){
+             emptyWord += "-";
+         }
+
+         wins++;
+
+         lettersGuessed = [];
+
+      }
+
+    //   if (remaingingGuess === 0){
+    //       alert("YOU LOSE");
+
+    //       emptyWord = "";
+        
+    //       currentWord = footballTeams[Math.floor(Math.random() * footballTeams.length)];
+ 
+    //       for (i = currentWord.length; i > 0; i--){
+    //           emptyWord += "-";
+    //       }
+ 
+    //       wins = 0;
+ 
+    //       lettersGuessed = [];
+
+    //   }
 
     console.log(remainingGuess);
     console.log(emptyWord);
+    console.log(lettersGuessed);
+    console.log(wins);
 
 }
+
+
 
 
 
