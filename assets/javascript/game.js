@@ -5,10 +5,10 @@ var remainingGuess = 13;
 var currentWord;
 var emptyWord = ""
 
-var numberWins = document.getElementById("number_wins");
-var currentWord = document.getElementById("current_word");
-var remaingingGuess = document.getElementById("remaining_guess");
-var lettersGuessed = document.getElementById("taken_letters");
+var currentWins = document.getElementById("number_wins");
+var nextWord = document.getElementById("current_word");
+var lastGuess = document.getElementById("remaining_guess");
+var lastLetters = document.getElementById("taken_letters");
 
 currentWord = footballTeams[Math.floor(Math.random() * footballTeams.length)];
 
@@ -26,9 +26,6 @@ var lettersGuessed = [];
 document.onkeyup = function(event){
     
     userGuess = event.key;
-
-    console.log(userGuess);
-    console.log(currentWord);
 
      if(userGuess){
          remainingGuess--;
@@ -59,28 +56,26 @@ document.onkeyup = function(event){
 
       }
 
-    //   if (remaingingGuess === 0){
-    //       alert("YOU LOSE");
+      if (remainingGuess === 0){
+          alert("YOU LOSE");
 
-    //       emptyWord = "";
+          emptyWord = "";
         
-    //       currentWord = footballTeams[Math.floor(Math.random() * footballTeams.length)];
+          currentWord = footballTeams[Math.floor(Math.random() * footballTeams.length)];
  
-    //       for (i = currentWord.length; i > 0; i--){
-    //           emptyWord += "-";
-    //       }
+          for (i = currentWord.length; i > 0; i--){
+              emptyWord += "-";
+          }
  
-    //       wins = 0;
- 
-    //       lettersGuessed = [];
+          lettersGuessed = [];
 
-    //   }
+      }
 
-    console.log(remainingGuess);
-    console.log(emptyWord);
-    console.log(lettersGuessed);
-    console.log(wins);
-
+      console.log(currentWord);
+      console.log(emptyWord);
+      console.log(remainingGuess);
+      console.log(lettersGuessed);
+      console.log(wins);
 }
 
 
