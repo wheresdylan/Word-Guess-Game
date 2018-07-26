@@ -1,11 +1,16 @@
-var footballTeams = ["patriots", "cowboys", "rams", "dolphins", "panthers", "bills"];
+var footballTeams = ["PATRIOTS", "COWBOYS", "RAMS", "DOLPHINS", "PANTHERS", "BILLS"];
 var userGuess;
 var wins = 0;
 var losses = 0;
 var remainingGuess = 12;
 var currentWord;
 var emptyWord = ""
-var myMusic;
+var patriots = new Audio("WeAreTheChampions.mp3")
+var cowboys = new Audio("cowboys SUCK!.mp3")
+var rams = new Audio("Mic Nice - Rams House (Whose House).mp3")
+var dolphins = new Audio("Miami dolphins fight song.mp3")
+var panthers = new Audio("MARK B. - CAROLINA ANTHEM (SHOT BY @DJCHUCKT).mp3")
+var bills = new Audio("Buffalo Bills Shout Song.mp3")
 
 currentWord = footballTeams[Math.floor(Math.random() * footballTeams.length)];
 
@@ -60,7 +65,7 @@ function win(){
 }
 
 function decreaseGuess(){
-    if(emptyWord.includes(userGuess)){
+    if(emptyWord.includes(userGuess) || lettersGuessed.includes(userGuess) || userGuess === "ENTER"){
         
     }
     else{
@@ -69,7 +74,7 @@ function decreaseGuess(){
 }
 
 function letters(){
-    if(emptyWord.includes(userGuess) || lettersGuessed.includes(userGuess)){
+    if(emptyWord.includes(userGuess) || lettersGuessed.includes(userGuess) || userGuess === "ENTER"){
         
     }
     else{
@@ -88,48 +93,92 @@ function replaceWord(){
 
 function changePicture(){
 
-    if(emptyWord === "patriots"){
+    if(emptyWord === "PATRIOTS"){
         document.getElementById("image").src="https://images-na.ssl-images-amazon.com/images/I/71ThCKlLrhL._SL1500_.jpg";
 
-        myMusic = new sound ()
+
+        stopAudio();
+        patriots.play();
+
     }
 
-    if(emptyWord === "cowboys"){
+    if(emptyWord === "COWBOYS"){
         document.getElementById("image").src="https://vignette.wikia.nocookie.net/degrassi/images/9/99/Trash-can-full-of-trash-keeeeetooo-21950089-600-456.jpg/revision/latest?cb=20140921033503";
 
+        stopAudio();
+        cowboys.play();
+
+
     }
 
-    if(emptyWord === "rams"){
+    if(emptyWord === "RAMS"){
         document.getElementById("image").src="http://www.inglewoodtoday.com/wp-content/uploads/2018/03/Top-design-Los-Angeles-Rams-flag-90x150cm-polyester-banner-with-2-Metal-Grommets.jpg_640x640.jpg";
 
+        stopAudio();
+        rams.play();
+
+
     }
 
-    if(emptyWord === "dolphins"){
+    if(emptyWord === "DOLPHINS"){
         document.getElementById("image").src="https://i.pinimg.com/originals/98/c5/63/98c5639d2e03f9c22dc902957b885355.jpg";
 
+        stopAudio();
+        dolphins.play();
+
+
     }
 
-    if(emptyWord === "panthers"){
+    if(emptyWord === "PANTHERS"){
         document.getElementById("image").src="http://media.graytvinc.com/images/810*455/carolinapanthers1.jpg";
 
+        stopAudio();
+        panthers.play();
+
+
     }
 
-    if(emptyWord === "bills"){
+    if(emptyWord === "BILLS"){
         document.getElementById("image").src="http://www.wdkx.com/wdkxwp/wp/wp-content/uploads/2018/01/maxresdefault-1038x576.jpg";
+
+        stopAudio();
+        bills.play();
+
 
     }
 
 }
 
+function stopAudio(){
+    patriots.pause();
+    patriots.currentTime = 0;
+
+    cowboys.pause();
+    cowboys.currentTime = 0;
+
+    bills.pause();
+    bills.currentTime = 0;
+
+    rams.pause();
+    rams.currentTime = 0;
+
+    panthers.pause();
+    panthers.currentTime = 0;
+
+    dolphins.pause();
+    dolphins.currentTime = 0;
+}
+
+
+
 document.onkeyup = function(event){
 
-    
-    userGuess = event.key.toLowerCase();
+    userGuess = event.key.toUpperCase();
 
-  
+    replaceWord();
     decreaseGuess();
     letters();
-    replaceWord();
+
 
      document.getElementById("current_word").firstChild.data = emptyWord;
 
