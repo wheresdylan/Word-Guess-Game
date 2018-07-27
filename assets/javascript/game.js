@@ -6,7 +6,7 @@ var remainingGuess = 8;
 var currentWord;
 var emptyWord = ""
 var patriots = new Audio("assets/Audio/WeAreTheChampions.mp3")
-var cowboys = new Audio("assets/Audio/cowboys SUCK!.mp3")
+var cowboys = new Audio("assets/Audio/Cowboys SUCK!.mp3")
 var rams = new Audio("assets/Audio/Mic Nice - Rams House (Whose House).mp3")
 var dolphins = new Audio("assets/Audio/Miami dolphins fight song.mp3")
 var panthers = new Audio("assets/Audio/MARK B. - CAROLINA ANTHEM (SHOT BY @DJCHUCKT).mp3")
